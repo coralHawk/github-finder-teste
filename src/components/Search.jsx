@@ -3,16 +3,17 @@ import axios from "axios";
 
 
 function UserSearch() {
-  const [query, setQuery] = useState('');
+  const [user, setUser] = useState('');
   const [data, setData] = useState([]);
 
   const handleInputChange = (event) => {
-    setQuery(event.target.value);
+    setUser(event.target.value);
+
   };
 
   const searchUsers = async () => {
     try {
-      axios.get(`https://api.github.com/search/users?q=${query}`)
+      axios.get(`https://api.github.com/search/users?q=${user}`)
       .then((res) => setData(res.data.items));
     } catch (error) {
       console.error('Erro ao procurar usuários:', error);
@@ -29,7 +30,7 @@ function UserSearch() {
       <input
         type="text"
         placeholder="Pesquise por Usuários"
-        value={query}
+        value={user}
         onChange={handleInputChange}
       />
       <br></br><br></br>
@@ -39,13 +40,12 @@ function UserSearch() {
         {data.map((user) => (
           <li key={user.id}>
             <div className='Users'>
-              <a href={user.html_url} target="_blank" rel="noopener noreferrer" >
-                <img src={user.avatar_url}/>
-                <br />
-            </a>
+            <h2 className='UserName'>{user.login}</h2>
+            <img src={user.avatar_url}/>
+            <br /><br />
             <button className='UserButton' onClick={() => getUserRepos(user.login)}>Repositórios de {user.login}</button>
             </div>
-            <br />
+            <br /><br /><br />
           </li>
         ))}
       </div>

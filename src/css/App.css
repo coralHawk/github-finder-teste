@@ -5,8 +5,6 @@ body {
     font-family:"Sixtyfour", sans-serif;
     text-align: center;
 }
-
-
 header {
     text-align: center;
     margin-top: 5%;
@@ -33,28 +31,6 @@ button {
     border:#AAAAFF;
     border-radius: 5px;
 }
-.UserButton {
-    background-color: #1E1E2E;
-    border:#1E1E2E;
-    color: #AAAAFF;
-    font-family:"Inter", sans-serif;
-    font-size: 15px;
-    margin: auto;
-    border-radius: 5px;
-
-}
-.Users {
-    
-    background-color: #AAAAFF;
-    height: 200px;
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    gap: 50;
-    padding-top: 25px;
-    align-content: center;
-}
 
 p{
     background-color: #AAAAFF;
@@ -68,10 +44,40 @@ img {
     border-radius: 5px;
 
 }
+.UserButton {
+    background-color: #1E1E2E;
+    border:#1E1E2E;
+    color: #AAAAFF;
+    font-family:"Inter", sans-serif;
+    font-size: 20px;
+    margin: auto;
+    border-radius: 5px;
+}
+.UserButton:hover{
+    background-color:#26263a
+}
+.Users {
+    height: 230px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    gap: 50;
+    padding-top: 25px;
+    align-content: center;
+}
 
 .Lista{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     color: #1E1E2E;
     grid-column-gap: 1px;
+    animation: fadeIn 5s;
+}
+.UserName{
+    color:#1E1E2E;
+    background-color: #AAAAFF;
+    border-radius: 5px;
+    width: 200px;
+    margin-left: 25px;
 }
