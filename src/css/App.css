@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&family=Workbench&display=swap');
+body {
+    background-color: #1E1E2E;
+    margin: 50;
+    font-family:"Sixtyfour", sans-serif;
+    text-align: center;
+}
+
+
+header {
+    text-align: center;
+    margin-top: 5%;
+}
+input {
+    background-color: #AAAAFF;
+    color: #1E1E2E;
+    border:#AAAAFF;
+    border-radius: 5px;
+    text-align: center;
+}
+::placeholder{
+    color: #1E1E2E;
+}
+h1 {
+    font-size: 40px;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    color: #AAAAFF;
+}
+
+button {
+    background-color: #AAAAFF;
+    border:#AAAAFF;
+    border-radius: 5px;
+}
+.UserButton {
+    background-color: #1E1E2E;
+    border:#1E1E2E;
+    color: #AAAAFF;
+    font-family:"Inter", sans-serif;
+    font-size: 15px;
+    margin: auto;
+    border-radius: 5px;
+
+}
+.Users {
+    
+    background-color: #AAAAFF;
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    gap: 50;
+    padding-top: 25px;
+    align-content: center;
+}
+
+p{
+    background-color: #AAAAFF;
+    color: #1E1E2E;
+    font-family:"Inter", sans-serif;
+    text-align: center;
+    gap: 10px;
+}
+img {
+    width: 150px;
+    border-radius: 5px;
+
+}
+
+.Lista{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color: #1E1E2E;
+    grid-column-gap: 1px;
+}
