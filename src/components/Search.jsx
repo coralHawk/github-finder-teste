@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import axios from "axios";
 
-
+ 
 function UserSearch() {
   const [user, setUser] = useState('');
   const [data, setData] = useState([]);
@@ -12,24 +13,46 @@ function UserSearch() {
   };
 
   const searchUsers = async () => {
-    try {
-      axios.get(`https://api.github.com/search/users?q=${user}`)
-      .then((res) => setData(res.data.items));
-    } catch (error) {
-      console.error('Erro ao procurar usuários:', error);
-    }
+
+    const res = await axios.get(`https://api.github.com/search/users?q=${user}`);
+    setData(res.data.items);
+
   };
+
   const getUserRepos = (username) => {
     window.open(`https://github.com/${username}?tab=repositories`, '_blank');
   };
-  
+
+  const getUserBio = (username) => {
+    return axios.get(`https://api.github.com/users/${username}`)
+      .then(res => {
+        if (res.data.bio) {
+          Swal.fire({
+            text: res.data.bio,
+            textColor: 'lavender',
+            background: '#1E1E2E',
+            confirmButtonText: 'Fechar',
+            customClass: { 
+              text: 'texto',
+            } 
+          });
+        } else {
+          Swal.fire({
+            text: 'Usuário não possui bio cadastrada',
+            background: '#1E1E2E',
+            confirmButtonText: 'Fechar',
+            customClass: { 
+              text: 'texto',
+            } 
+          
+          });
+        }
+      });
+  }
 
   return (
     <div>
-
       <input
-        type="text"
-        placeholder="Pesquise por Usuários"
         value={user}
         onChange={handleInputChange}
       />
@@ -40,10 +63,11 @@ function UserSearch() {
         {data.map((user) => (
           <li key={user.id}>
             <div className='Users'>
-            <h2 className='UserName'>{user.login}</h2>
-            <img src={user.avatar_url}/>
-            <br /><br />
-            <button className='UserButton' onClick={() => getUserRepos(user.login)}>Repositórios de {user.login}</button>
+              <h2 className='UserName'>{user.login}</h2>
+              <img src={user.avatar_url} />
+              <br /><br />
+              <button className='UserButton' onClick={() => getUserRepos(user.login)}>Repositórios de {user.login}</button>
+              <button className='UserButton' onClick={() => getUserBio(user.login)}>Ver bio de {user.login}</button>
             </div>
             <br /><br /><br />
           </li>
