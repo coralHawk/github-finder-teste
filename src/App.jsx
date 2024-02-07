@@ -1,9 +1,10 @@
 import './css/App.css';
-import UserSearch from './components/Search';
+import Search from './components/Page';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   document.title = 'GitHub Finder';
+
     return (
       
     <div className="App">
@@ -16,7 +17,7 @@ function App() {
         <br></br>
         <BrowserRouter>
          <Routes>
-          <Route path='/' element={<UserSearch />}/>
+          <Route path='/' element={<Search />}/>
             </Routes>
         </BrowserRouter>        
       </header>

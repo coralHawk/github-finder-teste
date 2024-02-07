@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from "axios";
+// import { invoke } from '@tauri-apps/api';
 
  
-function UserSearch() {
+function Search() {
   const [user, setUser] = useState('');
   const [data, setData] = useState([]);
 
   const handleInputChange = (event) => {
     setUser(event.target.value);
-
   };
+
 
   const searchUsers = async () => {
-
     const res = await axios.get(`https://api.github.com/search/users?q=${user}`);
     setData(res.data.items);
-
   };
 
-  const getUserRepos = (username) => {
-    window.open(`https://github.com/${username}?tab=repositories`, '_blank');
+  const getUserRepos = async (username) => {
+    const url = `https://github.com/${username}?tab=repositories`
+    // Código para webApp, ainda não funciona no app em si
+    // if (window.__TAURI__) {
+    //    await invoke('shell::open', url);
+    //  } else {
+      // Rodar no browser
+      window.open(url, '_blank');
+    // }
   };
 
   const getUserBio = (username) => {
@@ -77,4 +83,4 @@ function UserSearch() {
   );
 }
 
-export default UserSearch;
+export default Search;
