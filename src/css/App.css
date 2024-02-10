@@ -1,24 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour&family=Workbench&display=swap');
+
+/* Configurações do Site */
+
 body {
     background-color: #1E1E2E;
     margin: 50;
-    font-family:"Sixtyfour", sans-serif;
+    font-family: "Sixtyfour", sans-serif;
     text-align: center;
 }
+
 header {
     text-align: center;
     margin-top: 5%;
 }
+
 input {
     background-color: #AAAAFF;
     color: #1E1E2E;
-    border:#AAAAFF;
+    border: #AAAAFF;
     border-radius: 5px;
     text-align: center;
 }
-::placeholder{
+
+::placeholder {
     color: #1E1E2E;
 }
+
 h1 {
     font-size: 40px;
     align-items: center;
@@ -26,36 +33,49 @@ h1 {
     color: #AAAAFF;
 }
 
-button {
-    background-color: #AAAAFF;
-    border:#AAAAFF;
-    border-radius: 5px;
-}
-
-p{
+p {
     background-color: #AAAAFF;
     color: #1E1E2E;
-    font-family:"Inter", sans-serif;
+    font-family: "Inter", sans-serif;
     text-align: center;
     gap: 10px;
 }
+
 img {
     width: 150px;
     border-radius: 5px;
-
 }
-.UserButton {
+
+/* Configurações das Classes */
+
+.Search {
     background-color: #1E1E2E;
-    border:#1E1E2E;
+    border: 2px solid #AAAAFF;
     color: #AAAAFF;
-    font-family:"Inter", sans-serif;
-    font-size: 20px;
-    margin: auto;
+    font-family: "Inter", sans-serif;
+    font-size: 17px;
+    width: auto;
     border-radius: 5px;
 }
-.UserButton:hover{
-    background-color:#26263a
+
+.Button {
+    background-color: #1E1E2E;
+    border: 2px solid #AAAAFF;
+    color: #AAAAFF;
+    font-family: "Inter", sans-serif;
+    font-size: 17px;
+    white-space: nowrap;
+    text-justify: distribute;
+    border-radius: 5px;
+    transition: 0.3s;
 }
+
+.Button:hover {
+    background-color: #AAAAFF;
+    color: #1E1E2E;
+    font-size: 18px;
+}
+
 .Users {
     height: 230px;
     width: 250px;
@@ -67,20 +87,28 @@ img {
     align-content: center;
 }
 
-.Lista{
+.Lista {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     color: #1E1E2E;
     grid-column-gap: 1px;
-    animation: fadeIn 5s;
 }
-.UserName{
-    color:#1E1E2E;
+
+.UserName {
+    color: #1E1E2E;
     background-color: #AAAAFF;
     border-radius: 5px;
     width: 200px;
     margin-left: 25px;
 }
-.texto {
-    color:#AAAAFF !important;
-  }
+
+/* Configurações do SweetAlert2 */
+
+.swal2-container.swal2-center>.swal2-popup {
+    background-color: #1E1E2E !important;
+}
+
+.swal2-html-container,
+.swal2-title {
+    color: #AAAAFF !important;
+}

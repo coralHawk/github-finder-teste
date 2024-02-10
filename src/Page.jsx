@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from "axios";
-// import { invoke } from '@tauri-apps/api';
 
- 
 function Search() {
+  // Constantes
   const [user, setUser] = useState('');
   const [data, setData] = useState([]);
 
@@ -14,19 +13,12 @@ function Search() {
 
 
   const searchUsers = async () => {
-    const res = await axios.get(`https://api.github.com/search/users?q=${user}`);
+    let res = await axios.get(`https://api.github.com/search/users?q=${user}`);
     setData(res.data.items);
   };
 
   const getUserRepos = async (username) => {
-    const url = `https://github.com/${username}?tab=repositories`
-    // Código para webApp, ainda não funciona no app em si
-    // if (window.__TAURI__) {
-    //    await invoke('shell::open', url);
-    //  } else {
-      // Rodar no browser
-      window.open(url, '_blank');
-    // }
+    window.open(`https://github.com/${username}?tab=repositories`, '_blank');
   };
 
   const getUserBio = (username) => {
@@ -35,35 +27,24 @@ function Search() {
         if (res.data.bio) {
           Swal.fire({
             text: res.data.bio,
-            textColor: 'lavender',
-            background: '#1E1E2E',
             confirmButtonText: 'Fechar',
-            customClass: { 
-              text: 'texto',
-            } 
           });
         } else {
           Swal.fire({
             text: 'Usuário não possui bio cadastrada',
-            background: '#1E1E2E',
             confirmButtonText: 'Fechar',
-            customClass: { 
-              text: 'texto',
-            } 
-          
           });
         }
       });
   }
 
+  // O site
   return (
     <div>
-      <input
-        value={user}
-        onChange={handleInputChange}
-      />
+
+      <input className='Search' value={user} onChange={handleInputChange} />
       <br></br><br></br>
-      <button onClick={searchUsers}>Pesquisar<br></br></button>
+      <button className='Button' onClick={searchUsers}>Pesquisar<br></br></button>
       <br /><br />
       <div className='Lista'>
         {data.map((user) => (
@@ -72,10 +53,12 @@ function Search() {
               <h2 className='UserName'>{user.login}</h2>
               <img src={user.avatar_url} />
               <br /><br />
-              <button className='UserButton' onClick={() => getUserRepos(user.login)}>Repositórios de {user.login}</button>
-              <button className='UserButton' onClick={() => getUserBio(user.login)}>Ver bio de {user.login}</button>
+              <button className='Button' onClick={() => getUserRepos(user.login)}>Repositórios de {user.login}</button>
+              <br /><br />
+              <button className='Button' onClick={() => getUserBio(user.login)}>Ver bio de {user.login}</button>
+              <br /><br />
             </div>
-            <br /><br /><br />
+            <br /><br /><br /><br /><br />
           </li>
         ))}
       </div>
